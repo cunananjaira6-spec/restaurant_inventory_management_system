@@ -1,0 +1,37 @@
+{{> head}}
+<body class="landing-page">
+  <header class="landing-nav">
+    <a class="landing-brand" href="/"><span class="brand-mark">P</span><strong>mise.</strong></a>
+    <nav><a href="/login">Sign in</a><a class="button button-dark" href="/register">Get started <span>→</span></a></nav>
+  </header>
+  <main class="landing-main">
+    <section class="landing-hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="hero-dot"></span> A CALMER WAY TO RUN YOUR STOCKROOM</p>
+        <h1>Good food starts<br>with <em>good inventory.</em></h1>
+        <p class="hero-description">Know what’s on your shelves, catch low stock before it slows you down, and keep your restaurant running smoothly.</p>
+        <div class="hero-actions"><a class="button button-dark" href="/register">Set up your stockroom <span>→</span></a><a class="hero-secondary" href="/login">I already have an account</a></div>
+        <div class="hero-proof"><span class="proof-avatars"><i>M</i><i>A</i><i>J</i></span><span>Made for the people behind the plate.</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-glow"></div>
+        <div class="preview-card">
+          <div class="preview-top"><div><span class="preview-overline">YOUR STOCKROOM</span><strong>Today’s overview</strong></div><span class="preview-date">MON, 9:41 AM</span></div>
+          <div class="preview-metrics"><div><span>Products</span><strong>24</strong></div><div><span>Units in stock</span><strong>186</strong></div><div class="preview-alert"><span>Low stock</span><strong>03</strong></div></div>
+          <div class="preview-section-title"><strong>Needs a restock</strong><span>See all →</span></div>
+          <div class="preview-product"><span class="preview-product-icon produce-icon">✿</span><span><strong>Baby spinach</strong><small>Produce · 2 kg left</small></span><span class="preview-low">Low</span></div>
+          <div class="preview-product"><span class="preview-product-icon dairy-icon">◒</span><span><strong>Whole milk</strong><small>Dairy · 3 liters left</small></span><span class="preview-low">Low</span></div>
+          <div class="preview-product"><span class="preview-product-icon pantry-icon">◈</span><span><strong>Olive oil</strong><small>Pantry · 1 bottle left</small></span><span class="preview-low">Low</span></div>
+          <div class="preview-footer"><span class="preview-check">✓</span> Your stockroom, all in one place</div>
+        </div>
+        <div class="floating-note"><span>↗</span><div><strong>Stay one step ahead</strong><small>Low-stock alerts at a glance</small></div></div>
+      </div>
+    </section>
+    <section class="landing-features">
+      <div><span class="feature-number">01</span><strong>See the whole picture</strong><p>Stock levels, inventory value, and categories together on one clear dashboard.</p></div>
+      <div><span class="feature-number">02</span><strong>Find what you need</strong><p>Search and filter your products to check what’s on hand in seconds.</p></div>
+      <div><span class="feature-number">03</span><strong>Restock with confidence</strong><p>Set reorder points and spot items that need attention before service.</p></div>
+    </section>
+  </main>
+  <footer class="landing-footer"><span>mise. stockroom</span><span>Thoughtful tools for thoughtful kitchens.</span></footer>
+{{> footer }}

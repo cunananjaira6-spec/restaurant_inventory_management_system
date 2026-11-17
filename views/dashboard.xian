@@ -1,0 +1,105 @@
+{{> head}}
+<body class="app-page">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/dashboard">
+        <span class="brand-mark">P</span>
+        <span><strong>mise.</strong><small>STOCKROOM</small></span>
+      </a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="side-nav">
+        <a class="nav-link active" href="/dashboard"><span class="nav-icon">⌂</span>Overview</a>
+        <a class="nav-link" href="/inventory"><span class="nav-icon">▤</span>Inventory</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="online-dot"></span><span><strong>Stockroom status</strong><small>Inventory tracking is active</small></span></div>
+        <a class="nav-link logout-link" href="/logout"><span class="nav-icon">↪</span>Sign out</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">P</span><strong>mise.</strong></div>
+        <div class="breadcrumbs">Workspace <span>/</span> <strong>Overview</strong></div>
+        <div class="topbar-actions"><span class="today-label">{{today}}</span><span class="avatar">{{userInitial}}</span></div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="page-heading">
+          <div><p class="eyebrow">YOUR RESTAURANT, AT A GLANCE</p><h1>Good {{greeting}}, {{userName}}</h1><p class="muted">Here’s what’s happening in your stockroom today.</p></div>
+          <a class="button button-dark" href="/inventory"><span>＋</span> Manage inventory</a>
+        </section>
+
+        {{#if success_msg}}<div class="flash flash-success">{{success_msg}}</div>{{/if}}
+        {{#if error_msg}}<div class="flash flash-error">{{error_msg}}</div>{{/if}}
+
+        <section class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-label">Total products</span><span class="metric-icon icon-lilac">▤</span></div>
+            <div class="metric-value">{{totalItems}}</div><div class="metric-foot">Unique items in your inventory</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-label">Units in stock</span><span class="metric-icon icon-mint">▦</span></div>
+            <div class="metric-value">{{totalUnits}}</div><div class="metric-foot">Across all tracked products</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-label">Stock value</span><span class="metric-icon icon-peach">$</span></div>
+            <div class="metric-value metric-currency">{{stockValue}}</div><div class="metric-foot">Estimated value at current cost</div>
+          </article>
+          <article class="metric-card metric-alert">
+            <div class="metric-top"><span class="metric-label">Needs attention</span><span class="metric-icon icon-rose">!</span></div>
+            <div class="metric-value">{{lowStockCount}}</div><div class="metric-foot"><a href="/inventory?status=low">Products at or below reorder level <span>↗</span></a></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel inventory-panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">LATEST UPDATES</p><h2>Recently added</h2></div>
+              <a class="text-link" href="/inventory">View inventory <span>→</span></a>
+            </div>
+            {{#if recentItems.length}}
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>QUANTITY</th><th>STATUS</th></tr></thead>
+                <tbody>
+                  {{#each recentItems}}
+                  <tr>
+                    <td><div class="product-cell"><span class="product-avatar">{{initial}}</span><span><strong>{{name}}</strong><small>Updated {{updatedAt}}</small></span></div></td>
+                    <td><span class="category-text">{{categoryName}}</span></td>
+                    <td><strong>{{quantity}}</strong> <span class="muted">{{unit}}</span></td>
+                    <td><span class="status-badge {{statusClass}}"><i></i>{{status}}</span></td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+            {{else}}
+            <div class="empty-state"><span class="empty-icon">▤</span><h3>Your inventory starts here</h3><p>Add your first product to see your stockroom at a glance.</p><a class="button button-dark" href="/inventory">Add a product <span>→</span></a></div>
+            {{/if}}
+          </article>
+
+          <article class="panel category-panel">
+            <div class="panel-heading"><div><p class="eyebrow">STOCK BREAKDOWN</p><h2>By category</h2></div><span class="subtle-count">{{categoryCount}} total</span></div>
+            {{#if categories.length}}
+              <div class="category-list">
+                {{#each categories}}
+                <div class="category-row">
+                  <div class="category-row-top"><span class="category-name"><i class="category-dot {{colorClass}}"></i>{{name}}</span><strong>{{itemCount}}</strong></div>
+                  <div class="progress-track"><span class="{{colorClass}}" style="width: {{percentage}}%"></span></div>
+                  <div class="category-meta">{{units}} units <span>{{percentage}}% of products</span></div>
+                </div>
+                {{/each}}
+              </div>
+            {{else}}
+              <div class="category-empty"><span class="empty-icon">◷</span><p>Category insights will appear as you add products.</p><a class="text-link" href="/inventory">Go to inventory →</a></div>
+            {{/if}}
+          </article>
+        </section>
+
+        <footer class="page-footer"><span>mise. stockroom</span><span>Made for the people behind the plate.</span></footer>
+      </div>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+{{> footer }}
